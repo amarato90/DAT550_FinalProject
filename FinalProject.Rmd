@@ -1,0 +1,42 @@
+---
+title: "FinalProject Lipidomics MTBLS352"
+author: "Ana Ramirez"
+date: "`r Sys.Date()`"
+output: html_document
+params: TRUE
+---
+
+## INTRODUCTION
+For this document we are using the metabolomics study MTBLS352, available online <https://www.ebi.ac.uk/metabolights/editor/MTBLS352/files> which contains plasma lipidomics data from 293 adults in China, including individuals with normal glucose tolerance, prediabetes, and type 2 diabetes. Quantitative intensity values were not present in the public processed tables; therefore, results are limited to sample counts and annotated lipid identities. Filenames were simplified locally for reproducibility and clarity.
+
+```{r, setup, echo=FALSE, message=FALSE, warning=FALSE}
+library(here)
+library(tidyverse)
+library(janitor)
+library(gtsummary)
+library(gt)
+
+here::i_am("FinalProject.Rmd")
+```
+
+
+```{r, load-data, echo=FALSE, message=FALSE, warning=FALSE}
+data <- readRDS(
+  here::here("data", "derived_data", "mtbls352_long.rds"))
+```
+
+## Table 1. Lipids identified and number of participants per glycemic group.
+Although the study included 293 participants, each individual was measured in multiple assay modes (typically positive and negative ionization). Therefore, the dataset contains 586 sample measurements (assays), and Table 1 summarizes counts at the measurement level rather than unique participants.
+```{r, table1, echo=FALSE, message=FALSE, warning=FALSE}
+library(here)
+table1_df <- readRDS(
+  here::here("output", "table1_df.rds"))
+knitr::kable(table1_df)
+```
+
+
+## Figure 1. Number of patients per glycemic group
+```{r, fig1_png, echo=FALSE, message=FALSE, warning=FALSE}
+knitr::include_graphics(
+  here::here("output", "group_barplot.png"))
+```
