@@ -1,0 +1,42 @@
+# DAT550 Final Project: Lipidomics MTBLS352
+
+**Author:** Ana Ramirez
+
+## About
+This project analyzes plasma lipidomics data from the public metabolomics 
+study [MTBLS352](https://www.ebi.ac.uk/metabolights/editor/MTBLS352/files), 
+which includes 293 adults from China across three glycemic groups: normal 
+glucose tolerance, prediabetes, and type 2 diabetes.
+
+## How to Generate the Report
+From the project root, run:
+```bash
+make
+```
+This will run all scripts in order and render `FinalProject.html`.
+
+To remove all generated files:
+```bash
+make clean
+```
+
+## Code Description
+`code/00_clean_data.R`
+- reads raw metadata (`data/raw/MTBLS352_metadata.txt`) and lipid intensity 
+  data (`data/raw/MTBLS352_intensity.tsv`)
+- pivots lipid data to long format and joins with participant metadata
+- saves cleaned dataset to `data/derived_data/mtbls352_long.rds`
+
+`code/01_table1.R`
+- reads `data/derived_data/mtbls352_long.rds`
+- generates Table 1: number of participants per lipid per glycemic group
+- saves table to `output/table1_df.rds`
+
+`code/02_plot.R`
+- reads `data/derived_data/mtbls352_long.rds`
+- generates Figure 1: bar plot of number of participants per glycemic group
+- saves figure to `output/group_barplot.png` and `output/group_barplot.rds`
+
+`FinalProject.Rmd`
+- reads outputs from `code/01_table1.R` and `code/02_plot.R`
+- renders the final HTML report with Table 1 and Figure 1
