@@ -38,5 +38,5 @@ knitr::kable(table1_df)
 ## Figure 1. Number of patients per glycemic group
 ```{r, fig1_png, echo=FALSE, message=FALSE, warning=FALSE}
 knitr::include_graphics(
-  here::here("output", "group_barplot.png"))
+  here::here("figures", "group_barplot.png"))
 ```
