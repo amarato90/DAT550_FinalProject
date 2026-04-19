@@ -1,6 +1,5 @@
 library(here)
 library(dplyr)
-library(gtsummary)
 library(ggplot2)
 
 here::i_am("code/02_plot.R")
@@ -25,11 +24,11 @@ p <-
     theme_minimal()
 
 # Save the plot object (so you can print it in Rmd if you want)
-saveRDS(p, here::here("output", "group_barplot.rds"))
+saveRDS(p, here::here("figures", "group_barplot.rds"))
 
 # Optional: also save as an image
 ggsave(
-  filename = here::here("output", "group_barplot.png"),
+  filename = here::here("figures", "group_barplot.png"),
   plot = p,
   width = 7, height = 4, dpi = 300
 )
