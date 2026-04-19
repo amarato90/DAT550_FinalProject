@@ -3,7 +3,6 @@ title: "FinalProject Lipidomics MTBLS352"
 author: "Ana Ramirez"
 date: "`r Sys.Date()`"
 output: html_document
-params: TRUE
 ---
 
 ## INTRODUCTION
