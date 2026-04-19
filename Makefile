@@ -25,9 +25,9 @@ clean:
 # Mac/Linux
 docker_report:
 	mkdir -p report
-	docker run --rm -v $(PWD)/report:/project/report data550-finalproject
+	docker run --rm -v $$(pwd)/report:/project/report amrarato90/dat550-finalproject
 
 # Windows (Git Bash)
 docker_report_win:
 	mkdir -p report
-	docker run --rm -v /$(PWD)/report:/project/report data550-finalproject
+	docker run --rm -v //$$(pwd)/report:/project/report amrarato90/dat550-finalproject

@@ -1,7 +1,6 @@
 FROM rocker/r-ubuntu
 
 RUN apt-get update && apt-get install -y \
-    pandoc \
     libxml2-dev \
     libcurl4-openssl-dev \
     libssl-dev
@@ -31,5 +30,8 @@ COPY renv/settings.json renv
 RUN Rscript -e "renv::restore(prompt=FALSE)"
 
 RUN mkdir report
+
+# Install pandoc again at the end to avoid PATH issues
+RUN apt-get update && apt-get install -y pandoc
 
 CMD make && mv FinalProject.html report/
