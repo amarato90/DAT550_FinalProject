@@ -20,7 +20,7 @@ clean:
 	      output/table1_df.rds \
 	      figures/group_barplot.png \
 	      figures/group_barplot.rds \
-	      FinalProject.html
+	      report/FinalProject.html
 
 # Mac/Linux
 docker_report:
